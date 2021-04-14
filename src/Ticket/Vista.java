@@ -14,6 +14,7 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.awt.FontMetrics;
+import java.util.Date;
 
 /**
  *
@@ -136,7 +137,7 @@ public class BillPrintable implements Printable {
                 double sum=pp3a+pp4a+multiplica;
                 double iva = sum*21/100;;
                 double total= sum+iva;
-              
+              Date fecha = new Date();
             ///////////////// Product price Get ///////////
                 
              g2d.setFont(new Font("Monospaced",Font.PLAIN,9));
@@ -146,6 +147,7 @@ public class BillPrintable implements Printable {
             g2d.drawString("      EL CIF DE LA EMPRESA           ",10,y);y+=yShift;            
             g2d.drawString("      LA DIRECCION DE LA EMPRESA     ",10,y);y+=yShift;
             g2d.drawString("     NUMERO DE INFORME "+pn1a+"      ",10,y);y+=yShift;
+            g2d.drawString("     fecha "+fecha+"      ",10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=yShift;
             g2d.drawString(" Cantidad  Concepto          Precio  ",10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
