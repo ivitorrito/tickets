@@ -132,9 +132,11 @@ public class BillPrintable implements Printable {
                 double  pp2a=Integer.valueOf(pp2.getText());
                 double  pp3a=Integer.valueOf(pp3.getText());
                 double  pp4a=Integer.valueOf(pp4.getText());
-                double sum=pp2a+pp3a+pp4a;
-                double iva = sum*21/100;
+                double multiplica = pp1a*pp2a;
+                double sum=pp3a+pp4a+multiplica;
+                double iva = sum*21/100;;
                 double total= sum+iva;
+              
             ///////////////// Product price Get ///////////
                 
              g2d.setFont(new Font("Monospaced",Font.PLAIN,9));
@@ -147,10 +149,10 @@ public class BillPrintable implements Printable {
             g2d.drawString("-------------------------------------",10,y);y+=yShift;
             g2d.drawString(" Cantidad  Concepto          Precio  ",10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
-            g2d.drawString(" "+pp1a+"                            ",10,y);y+=yShift;
-            g2d.drawString("            "+pn2a+"         "+pp2a+"",10,y);y+=yShift;
-            g2d.drawString("            "+pn3a+"         "+pp3a+"",10,y);y+=yShift;
-            g2d.drawString("            "+pn4a+"         "+pp4a+"",10,y);y+=yShift;
+            g2d.drawString(" "+pp1a+"......"+pn2a+".........."+pp2a+"",12,y);y+=yShift;
+            g2d.drawString("                                     ",10,y);y+=yShift;
+            g2d.drawString("                      "+pn3a+"         "+pp3a+"",10,y);y+=yShift;
+            g2d.drawString("                      "+pn4a+"         "+pp4a+"",10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=yShift;
             g2d.drawString(" .................Importe : "+sum+"  ",10,y);y+=yShift;
             g2d.drawString("................. IVA     : "+iva+"  ",10,y);y+=yShift;
