@@ -5,6 +5,7 @@
  */
 package Ticket;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -17,9 +18,11 @@ import java.awt.FontMetrics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Date;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -144,15 +147,18 @@ public class BillPrintable implements Printable {
                 double total= pp1a*pp2a;
               Date fecha = new Date();
           
-             
-//              ImageIcon imagen = new ImageIcon(getClass().getResource("/logo.jpg"));
-             
+             Dimension height = getSize();
+
+  
+
 
 
             ///////////////// Product price Get ///////////
-                 
+//                 g2d.drawString(" "+imagen+"                 ",10,y);y+=yShift; 
 //             g2d.setFont(new Font("Monospaced",Font.PLAIN,9));
             g2d.setFont(new Font("Monospaced",Font.ITALIC,9));
+         
+            
             
             g2d.drawString("-------------------------------------",12,y);y+=yShift;
             g2d.drawString("                                     ",10,y);y+=yShift;
@@ -307,6 +313,7 @@ public class BillPrintable implements Printable {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+
     /**
      * @param args the command line arguments
      */
@@ -342,6 +349,7 @@ public class BillPrintable implements Printable {
             }
         });
     }
+      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
