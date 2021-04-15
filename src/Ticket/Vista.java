@@ -14,7 +14,12 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.awt.FontMetrics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Date;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -123,41 +128,58 @@ public class BillPrintable implements Printable {
             ///////////////// Product names Get ///////////
                 String  pn1a=pn1.getText();
                 String pn2a=pn2.getText();
-                String pn3a=pn3.getText();
-                String pn4a=pn4.getText();
+//                String pn3a=pn3.getText();
+//                String pn4a=pn4.getText();
             ///////////////// Product names Get ///////////
                 
             
             ///////////////// Product price Get ///////////
-                double  pp1a=Integer.valueOf(pp1.getText());
+                int  pp1a=Integer.valueOf(pp1.getText());
                 double  pp2a=Integer.valueOf(pp2.getText());
-                double  pp3a=Integer.valueOf(pp3.getText());
-                double  pp4a=Integer.valueOf(pp4.getText());
+//                double  pp3a=Integer.valueOf(pp3.getText());
+//                double  pp4a=Integer.valueOf(pp4.getText());
                 double multiplica = pp1a*pp2a;
-                double sum=pp3a+pp4a+multiplica;
-                double iva = sum*21/100;;
-                double total= sum+iva;
+//                double sum=pp3a+pp4a+multiplica;
+//                double iva = sum*21/100;;
+                double total= pp1a*pp2a;
               Date fecha = new Date();
+          
+             
+//              ImageIcon imagen = new ImageIcon(getClass().getResource("/logo.jpg"));
+             
+
+
             ///////////////// Product price Get ///////////
-                
-             g2d.setFont(new Font("Monospaced",Font.PLAIN,9));
+                 
+//             g2d.setFont(new Font("Monospaced",Font.PLAIN,9));
+            g2d.setFont(new Font("Monospaced",Font.ITALIC,9));
+            
             g2d.drawString("-------------------------------------",12,y);y+=yShift;
-            g2d.drawString("         Copiadoras Costaluz         ",12,y);y+=yShift;
-            g2d.drawString("-------------------------------------",12,y);y+=headerRectHeight;
-            g2d.drawString("      EL CIF DE LA EMPRESA           ",10,y);y+=yShift;            
-            g2d.drawString("      LA DIRECCION DE LA EMPRESA     ",10,y);y+=yShift;
-            g2d.drawString("     NUMERO DE INFORME "+pn1a+"      ",10,y);y+=yShift;
-            g2d.drawString("     fecha "+fecha+"      ",10,y);y+=yShift;
-            g2d.drawString("-------------------------------------",10,y);y+=yShift;
-            g2d.drawString(" Cantidad  Concepto          Precio  ",10,y);y+=yShift;
-            g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
-            g2d.drawString(" "+pp1a+"......"+pn2a+".........."+pp2a+"",12,y);y+=yShift;
             g2d.drawString("                                     ",10,y);y+=yShift;
-            g2d.drawString("                      "+pn3a+"         "+pp3a+"",10,y);y+=yShift;
-            g2d.drawString("                      "+pn4a+"         "+pp4a+"",10,y);y+=yShift;
+            g2d.setFont(new Font("Monospaced",Font.ITALIC,20));
+           
+            g2d.drawString("      HGC                   ",25,y);y+=yShift;y+=headerRectHeight;
+            g2d.setFont(new Font("Monospaced",Font.PLAIN,9));
+            g2d.drawString("     Biomedical research Diagnostic  ",12,y);y+=yShift;y+=headerRectHeight;
+            g2d.drawString("-------------------------------------",12,y);y+=headerRectHeight;
+            g2d.drawString("              B-21541438             ",10,y);y+=yShift;            
+            g2d.drawString("Parque Científico y Tecnológico E2000",10,y);y+=yShift;
+            g2d.drawString("   C/ Caucho - 1    "+"   Aljaraque"   ,10,y);y+=yShift;
+            g2d.drawString("           Tlf. 662 584 196          ",10,y);y+=yShift;
+            g2d.drawString("                                     ",10,y);y+=yShift;
+            g2d.drawString("     NUMERO DE INFORME "+pn1a+"      ",10,y);y+=yShift;
+            g2d.drawString("                                     ",10,y);y+=yShift;
+            g2d.drawString(" fecha "+fecha+"                 ",10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=yShift;
-            g2d.drawString(" .................Importe : "+sum+"  ",10,y);y+=yShift;
-            g2d.drawString("................. IVA     : "+iva+"  ",10,y);y+=yShift;
+            g2d.drawString(" Cantidad      Concepto      Precio  ",10,y);y+=yShift;
+            g2d.drawString("-------------------------------------",10,y);y+=headerRectHeight;
+            g2d.drawString(" "+pp1a+"      "+pn2a+"      "+pp2a+"",12,y);y+=yShift;
+            g2d.drawString("                                     ",10,y);y+=yShift;
+            g2d.drawString("                                     ",10,y);y+=yShift;
+            g2d.drawString("                                     ",10,y);y+=yShift;
+            g2d.drawString("-------------------------------------",10,y);y+=yShift;
+            g2d.drawString(" .................Importe : "+pp2a+" ",10,y);y+=yShift;
+            g2d.drawString("................. IVA     : "+"      ",10,y);y+=yShift;
             g2d.drawString("-------------------------------------",10,y);y+=yShift;
             g2d.drawString("                   Total : "+total+" ",10,y);y+=yShift;
             g2d.drawString("                                     ",10,y);y+=yShift;
@@ -195,14 +217,10 @@ public class BillPrintable implements Printable {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        pn4 = new javax.swing.JTextField();
-        pp4 = new javax.swing.JTextField();
         pn2 = new javax.swing.JTextField();
-        pn3 = new javax.swing.JTextField();
         pn1 = new javax.swing.JTextField();
         pp1 = new javax.swing.JTextField();
         pp2 = new javax.swing.JTextField();
-        pp3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -224,43 +242,39 @@ public class BillPrintable implements Printable {
         jLabel1.setToolTipText("");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 240, 59));
 
-        pn4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(pn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 283, 30));
-        jPanel1.add(pp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, 150, 30));
-        jPanel1.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 283, 30));
-        jPanel1.add(pn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 283, 30));
+        pn2.setText("PCR-COVID-19");
+        jPanel1.add(pn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 283, 30));
 
         pn1.setForeground(new java.awt.Color(51, 51, 51));
         pn1.setCaretColor(new java.awt.Color(51, 51, 51));
-        jPanel1.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 160, -1));
-        jPanel1.add(pp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 50, 30));
-        jPanel1.add(pp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 150, 30));
-        jPanel1.add(pp3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, 150, 30));
+        jPanel1.add(pn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 160, -1));
+        jPanel1.add(pp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 50, 30));
+        jPanel1.add(pp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 150, 30));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("IMPRIMIR");
         jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 90, 40));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 180, 90, 40));
 
         jLabel8.setText("CANTIDAD");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
 
         jLabel9.setText("ARTICULO");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, -1, -1));
 
         jLabel10.setText("PRECIO");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
 
         jLabel2.setText("NUMERO DE INFORME");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 146, -1, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -270,7 +284,10 @@ public class BillPrintable implements Printable {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -336,11 +353,7 @@ public class BillPrintable implements Printable {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField pn1;
     private javax.swing.JTextField pn2;
-    private javax.swing.JTextField pn3;
-    private javax.swing.JTextField pn4;
     private javax.swing.JTextField pp1;
     private javax.swing.JTextField pp2;
-    private javax.swing.JTextField pp3;
-    private javax.swing.JTextField pp4;
     // End of variables declaration//GEN-END:variables
 }
